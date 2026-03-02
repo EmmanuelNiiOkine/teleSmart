@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/vodafone"
+  to = "https://ussd.telecel.ismartghana.com/api/vodafone"
+  status = 200
+  force = true
