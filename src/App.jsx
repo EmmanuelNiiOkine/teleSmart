@@ -4,7 +4,28 @@ import HeroSection from './components/HeroSection';
 import BundleForm from './components/BundleForm';
 import Footer from './components/Footer';
 
+
+// Current app version
+const CURRENT_VERSION = "1.0.4";
+
 function App() {
+  React.useEffect(() => {
+    const checkVersion = async () => {
+      try {
+        const response = await fetch();
+        if (response.ok) {
+          const data = await response.json();
+          if (data.version && data.version !== CURRENT_VERSION) {
+            window.location.reload(true);
+          }
+        }
+      } catch (e) {}
+    };
+    checkVersion();
+    const interval = setInterval(checkVersion, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
